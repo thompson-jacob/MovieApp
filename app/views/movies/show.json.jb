@@ -1,0 +1,10 @@
+{
+  id: @movie.id,
+  title: @movie.title,
+  release: @movie.release,
+  reception: @movie.reception,
+  description: @movie.description,
+  watch: @movie.watch,
+  created_at: @movie.created_at,
+  updated_at: @movie.updated_at
+}
