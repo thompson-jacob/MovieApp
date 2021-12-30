@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       delete 'movies/:id', to: 'movies#destroy'
     end
   end
+  
   root 'movies#index'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # EXAMPLE HTML ROUTE

@@ -1,12 +1,13 @@
 class Api::V1::MoviesController < ApplicationController
 
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /movies
   # GET /movies.json
   def index 
     @movies = Movie.all.order(title: :asc)
-    render: json: @movies
+    render json: @movies
   end
 
   # GET /movies/1
@@ -14,7 +15,7 @@ class Api::V1::MoviesController < ApplicationController
   def show 
     if @movie
       render json: @movie
-    begin
+    else
       render json: @movie.errors
     end
   end
@@ -32,9 +33,11 @@ class Api::V1::MoviesController < ApplicationController
   #POST /movies.json
   def create
     @movie = Movie.new(movie_params)
+    puts "movie_params = #{movie_params}"
 
     if @movie.save
-      render json @movie
+      puts "#### MOVIE from create in saved = #{@movie.title}"
+      render json: @movie
     else 
       render json: @movie.errors
     end
@@ -55,14 +58,14 @@ class Api::V1::MoviesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_movie
-    @movie = Movie.find(params[:id])
-  end
+    def set_movie
+      @movie = Movie.find(params[:id])
+    end
 
-  # Only allow a list of trusted parameters through.
-  def movie_params
-    params.permit(:title, :release, :reception, :description, :watvh)
-  end
+    # Only allow a list of trusted parameters through.
+    def movie_params
+      params.permit(:title, :release, :reception, :description, :watch)
+    end
   
-    
+
 end

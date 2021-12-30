@@ -14,6 +14,6 @@ export default () => (
         <Movies />
       </div>
     </Content>
-    <Footer style={{ textAlign: "center" }}>Gulumpify ©2021.</Footer>
+    <Footer style={{ textAlign: "center" }}>JT ©2021.</Footer>
   </Layout>
 );
